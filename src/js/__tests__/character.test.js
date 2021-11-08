@@ -29,8 +29,8 @@ test('class Character should constructs object', () => {
     type: 'swordsman',
     health: 100,
     level: 1,
-    attack: 0,
-    defence: 0,
+    attack: undefined,
+    defence: undefined,
   };
   const received = new Character(input[0], input[1]);
   expect(received).toEqual(expected);
@@ -46,17 +46,19 @@ test('method levelUp of class Character should throw error', () => {
 });
 
 test('method levelUp of class Character should increase level & health', () => {
-  const input = ['test', 'swordsman'];
+  const input = ['test', 'magician'];
   const expected = {
     name: 'test',
-    type: 'swordsman',
+    type: 'magician',
     health: 100,
     level: 2,
-    attack: 0,
-    defence: 0,
+    attack: 12,
+    defence: 12,
   };
   const received = new Character(input[0], input[1]);
   received.health = 70;
+  received.attack = 10;
+  received.defence = 10;
   received.levelUp();
   expect(received).toEqual(expected);
 });
@@ -78,7 +80,7 @@ test('method demage of class Character should decrease health', () => {
     type: 'swordsman',
     health: healthExpected,
     level: 1,
-    attack: 0,
+    attack: undefined,
     defence: 50,
   };
   const received = new Character(input[0], input[1]);
